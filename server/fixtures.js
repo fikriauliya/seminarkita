@@ -9,6 +9,7 @@ if (Events.find().count() == 0) {
 
   Events.insert({
     title: "My First Event",
+    description: "This is my first public event, sponsored by Google and Microsoft. There will be a lot of HACK! Enjoy!",
     userId: admin._id,
     userName: admin.profile.name,
     location: "Singapore",
