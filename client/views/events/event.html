@@ -1,13 +1,11 @@
 <template name="event">
-  <div class="row">
-    <div class="col-sm-12">
-      <h4>{{title}}</h4>
-    </div>
-    <div class="col-sm-12">
+  <a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">{{title}}</h4>
+    <p class="list-group-item-text">
       Time: {{timeFrom}} - {{timeTo}}
-    </div>
-    <div class="col-sm-12">
-      Host: {{userId}}
-    </div>
-  </div>
+      <br/>
+      Host: {{userName}}
+    </p>
+  </a>
 </template>
+

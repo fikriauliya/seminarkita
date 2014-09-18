@@ -5,9 +5,12 @@ if (Events.find().count() == 0) {
     password: "passw0rd"
   });
 
+  admin = Meteor.users.findOne(adminId);
+
   Events.insert({
     title: "My First Event",
-    userId: adminId,
+    userId: admin._id,
+    userName: admin.profile.name,
     location: "Singapore",
     timeFrom: new Date(),
     timeTo: new Date() 
