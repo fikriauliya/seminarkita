@@ -1,7 +1,12 @@
 <template name="eventsList">
-  <div class="list-group">
-    {{#each eventsList}}
-      {{> event}}
-    {{/each}}
+  <h4>Events</h4>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="list-group">
+        {{#each eventsList}}
+          {{> event}}
+        {{/each}}
+      </div>
+    </div>
   </div>
 </template>
