@@ -1,0 +1,25 @@
+<template name="eventPage">
+  <div class="row">
+    <div class="col-sm-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">Attendance</a></li>
+        <li><a href="#">Questions</a></li>
+        <li><a href="#">Feedbacks</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      Content
+    </div>
+    <div class="col-sm-3 well">
+      <h4 class="list-group-item-heading">{{title}}</h4>
+      <p class="list-group-item-text">
+        {{description}}
+        <hr/>
+        <b>Time:</b> {{timeFrom}} - {{timeTo}}
+        <br/>
+        <b>Host:</b> {{userName}}
+      </p>
+    </div>
+  </div>
+</template>
+
