@@ -1,18 +1,18 @@
 // Fixture data 
 if (Events.find().count() == 0) {
-  var adminId = Meteor.users.insert( {
+  Accounts.createUser({
     email: 'pahlevi.fikri.auliya@gmail.com',
-    profile: { name: "Pahlevi Fikri Auliya"},
     password: "passw0rd"
   });
 
-  var admin = Meteor.users.findOne(adminId);
+  var admin = Meteor.users.findOne();
+  var adminId = admin._id;
 
   var firstEventId = Events.insert({
     title: "My First Event",
     description: "This is my first public event, sponsored by Google and Microsoft. There will be a lot of HACK! Enjoy!",
     userId: adminId,
-    userName: admin.profile.name,
+    userName: admin.emails[0].address,
     location: "Singapore",
     timeFrom: new Date(),
     timeTo: new Date(),
@@ -22,7 +22,7 @@ if (Events.find().count() == 0) {
     title: "My Second Event",
     description: "This is my second public event, sponsored by Google and Microsoft. There will be a lot of HACK! Enjoy!",
     userId: adminId,
-    userName: admin.profile.name,
+    userName: admin.emails[0].address,
     location: "Singapore",
     timeFrom: new Date(),
     timeTo: new Date(),
