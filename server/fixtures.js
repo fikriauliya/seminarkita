@@ -14,7 +14,8 @@ if (Events.find().count() == 0) {
     userName: admin.profile.name,
     location: "Singapore",
     timeFrom: new Date(),
-    timeTo: new Date() 
+    timeTo: new Date(),
+    attendees: [] 
   })
 
   var secondEventId = Events.insert({
@@ -24,7 +25,8 @@ if (Events.find().count() == 0) {
     userName: admin.profile.name,
     location: "Singapore",
     timeFrom: new Date(),
-    timeTo: new Date()
+    timeTo: new Date(),
+    attendees: []
   })
 
   for (var i = 0; i <= 500; i++) {
@@ -33,8 +35,7 @@ if (Events.find().count() == 0) {
       email: "email" + i.toString() + "@email.com",
       phone: 91234567,
       ownerId: adminId,
-      eventIds: [firstEventId, secondEventId],
-      attendances: [(i % 2 == 0 ? true : false), false]   
+      eventIds: [firstEventId, secondEventId]
     });
   };
 }
