@@ -1,12 +1,12 @@
 <template name="eventPage">
   <div>
-    <h4 class="list-group-item-heading">{{title}}</h4>
+    <h4 class="list-group-item-heading">{{event.title}}</h4>
     <p class="list-group-item-text">
-      {{description}}
+      {{event.description}}
       <hr/>
-      <b>Time:</b> {{timeFrom}} - {{timeTo}}
+      <b>Time:</b> {{event.timeFrom}} - {{event.timeTo}}
       <br/>
-      <b>Host:</b> {{userName}}
+      <b>Host:</b> {{event.userName}}
     </p>
   </div>
 </template>
