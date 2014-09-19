@@ -5,5 +5,5 @@ Meteor.publish('singleEvent', function(id) {
   return id && Events.find(id);
 });
 Meteor.publish('registrants', function(id) {
-  return id && Registrants.find({eventId: id});
+  return id && Registrants.find({eventIds: {$elemMatch: { $in: [id]}}});
 });

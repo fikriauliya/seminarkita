@@ -7,25 +7,34 @@ if (Events.find().count() == 0) {
 
   var admin = Meteor.users.findOne(adminId);
 
-  Events.insert({
+  var firstEventId = Events.insert({
     title: "My First Event",
     description: "This is my first public event, sponsored by Google and Microsoft. There will be a lot of HACK! Enjoy!",
-    userId: admin._id,
+    userId: adminId,
     userName: admin.profile.name,
     location: "Singapore",
     timeFrom: new Date(),
     timeTo: new Date() 
   })
-}
 
-if (Registrants.find().count() == 0) {
-  var firstEvent = Events.findOne();
-  for (var i = 0; i <= 100; i++) {
+  var secondEventId = Events.insert({
+    title: "My Second Event",
+    description: "This is my second public event, sponsored by Google and Microsoft. There will be a lot of HACK! Enjoy!",
+    userId: adminId,
+    userName: admin.profile.name,
+    location: "Singapore",
+    timeFrom: new Date(),
+    timeTo: new Date()
+  })
+
+  for (var i = 0; i <= 500; i++) {
     Registrants.insert({
       name: "User #" + i.toString(),
       email: "email" + i.toString() + "@email.com",
       phone: 91234567,
-      eventId: firstEvent._id
+      ownerId: adminId,
+      eventIds: [firstEventId, secondEventId],
+      attendances: [(i % 2 == 0 ? true : false), false]   
     });
   };
 }
