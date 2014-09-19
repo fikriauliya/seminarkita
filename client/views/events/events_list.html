@@ -1,12 +1,17 @@
 <template name="eventsList">
   <h4>Events</h4>
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-9">
       <div class="list-group">
         {{#each this}}
           {{> event}}
         {{/each}}
       </div>
+    </div>
+    <div class="col-sm-3">
+      <a href="{{pathFor 'eventNew'}}" class="btn btn-primary">
+        Create new event
+      </a>
     </div>
   </div>
 </template>

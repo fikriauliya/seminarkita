@@ -1,6 +1,7 @@
 // Fixture data 
 if (Events.find().count() == 0) {
   var adminId = Meteor.users.insert( {
+    email: 'pahlevi.fikri.auliya@gmail.com',
     profile: { name: "Pahlevi Fikri Auliya"},
     password: "passw0rd"
   });
