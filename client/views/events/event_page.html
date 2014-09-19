@@ -1,42 +1,13 @@
 <template name="eventPage">
-  <div class="row">
-    <div class="col-sm-2">
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active">
-          <a href="#">
-            <span class="glyphicon glyphicon-user"></span>
-            Attendance
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="glyphicon glyphicon-question-sign"></span>
-            Questions
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="glyphicon glyphicon-comment"></span>
-            Feedbacks
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="col-sm-8">
-      Content
-    </div>
-    <div class="col-sm-2">
-      <div class="well">
-        <h4 class="list-group-item-heading">{{title}}</h4>
-        <p class="list-group-item-text">
-          {{description}}
-          <hr/>
-          <b>Time:</b> {{timeFrom}} - {{timeTo}}
-          <br/>
-          <b>Host:</b> {{userName}}
-        </p>
-      </div>
-    </div>
+  <div>
+    <h4 class="list-group-item-heading">{{title}}</h4>
+    <p class="list-group-item-text">
+      {{description}}
+      <hr/>
+      <b>Time:</b> {{timeFrom}} - {{timeTo}}
+      <br/>
+      <b>Host:</b> {{userName}}
+    </p>
   </div>
 </template>
 

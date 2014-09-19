@@ -5,7 +5,7 @@ if (Events.find().count() == 0) {
     password: "passw0rd"
   });
 
-  admin = Meteor.users.findOne(adminId);
+  var admin = Meteor.users.findOne(adminId);
 
   Events.insert({
     title: "My First Event",
@@ -16,4 +16,16 @@ if (Events.find().count() == 0) {
     timeFrom: new Date(),
     timeTo: new Date() 
   })
+}
+
+if (Attendances.find().count() == 0) {
+  var firstEvent = Events.findOne();
+  for (var i = 0; i <= 100; i++) {
+    Attendances.insert({
+      name: "User #" + i.toString(),
+      email: "email" + i.toString() + "@email.com",
+      phone: 91234567,
+      eventId: firstEvent._id
+    });
+  };
 }
