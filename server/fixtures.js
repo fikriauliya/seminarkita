@@ -33,8 +33,8 @@ if (Events.find().count() == 0) {
       email: "email" + i.toString() + "@email.com",
       phone: 91234567,
       ownerId: adminId,
-      eventIds: [firstEventId, secondEventId]
-      attendedEventIds: [] 
+      eventIds: [firstEventId, secondEventId],
+      attendedEventIds: [i % 2 == 0 ? firstEventId : secondEventId] 
     });
   };
 }
