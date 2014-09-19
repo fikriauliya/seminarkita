@@ -16,8 +16,8 @@ Meteor.methods({
     var event = _.extend(_.pick(attr, 'title', 'description', 'location'), {
       userId: user._id, 
       userName: user.emails[0].address, 
-      timeFrom: new Date().getTime(),
-      timeTo: 0,
+      timeFrom: new Date(),
+      timeTo: new Date(),
     }); 
     
     var eventId = Events.insert(event);
