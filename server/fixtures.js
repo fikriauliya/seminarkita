@@ -15,7 +15,6 @@ if (Events.find().count() == 0) {
     location: "Singapore",
     timeFrom: new Date(),
     timeTo: new Date(),
-    attendees: [] 
   })
 
   var secondEventId = Events.insert({
@@ -26,7 +25,6 @@ if (Events.find().count() == 0) {
     location: "Singapore",
     timeFrom: new Date(),
     timeTo: new Date(),
-    attendees: []
   })
 
   for (var i = 0; i <= 500; i++) {
@@ -36,6 +34,7 @@ if (Events.find().count() == 0) {
       phone: 91234567,
       ownerId: adminId,
       eventIds: [firstEventId, secondEventId]
+      attendedEventIds: [] 
     });
   };
 }
