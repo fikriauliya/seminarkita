@@ -4,6 +4,6 @@ Meteor.publish('events', function() {
 Meteor.publish('singleEvent', function(id) {
   return id && Events.find(id);
 });
-Meteor.publish('attendances', function(id) {
-  return id && Attendances.find({eventId: id});
+Meteor.publish('registrants', function(id) {
+  return id && Registrants.find({eventId: id});
 });

@@ -18,10 +18,10 @@ if (Events.find().count() == 0) {
   })
 }
 
-if (Attendances.find().count() == 0) {
+if (Registrants.find().count() == 0) {
   var firstEvent = Events.findOne();
   for (var i = 0; i <= 100; i++) {
-    Attendances.insert({
+    Registrants.insert({
       name: "User #" + i.toString(),
       email: "email" + i.toString() + "@email.com",
       phone: 91234567,
