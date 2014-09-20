@@ -11,4 +11,5 @@ accounts-base
 ian:accounts-ui-bootstrap-3
 accounts-password
 reactive-var
+sacha:spin
 
