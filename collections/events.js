@@ -18,6 +18,9 @@ Meteor.methods({
       userName: user.emails[0].address, 
       timeFrom: new Date(),
       timeTo: new Date(),
+      moderatorIds: {
+        registration: [user._id]
+      }
     }); 
     
     var eventId = Events.insert(event);

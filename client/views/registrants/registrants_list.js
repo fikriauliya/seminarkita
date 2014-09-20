@@ -18,11 +18,20 @@ Template.registrantsList.helpers({
   },
 
   isOwner: function() {
-    return this.event.userId == Meteor.userId();
+    if (Meteor.user()) {
+      return this.event.userId == Meteor.userId();
+    } else {
+      return false;
+    }
   },
 
   myEvents: function() {
-    return Events.find({userId: Meteor.userId()});
+    if (Meteor.user()) {
+      Meteor.subscribe('myEvents', Meteor.userId());
+      return Events.find({userId: Meteor.userId()});
+    } else {
+      return [];
+    }
   }
 });
 

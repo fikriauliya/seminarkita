@@ -1,6 +1,9 @@
 Template.registrant.helpers({
   attending: function(){
     return _.include(this.attendedEventIds, Template.parentData(2).eventId) ? "checked" : ""
+  },
+  isModerator: function() {
+    return Template.parentData(2).isModerator();
   }
 });
 

@@ -17,11 +17,13 @@
     </div>
     <div class="pull-left col-sm-3">
       <!-- Button trigger modal -->
-      Not in the list?
-      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newRegistrantModal">
-        <span class="glyphicon glyphicon-plus"></span>
-        Add new
-      </button>
+      {{#if isModerator}}
+        Not in the list?
+        <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newRegistrantModal">
+          <span class="glyphicon glyphicon-plus"></span>
+            Add new
+        </button>
+      {{/if}}
     </div>
     <div class="pull-right" style="margin-right:20px">
       <b>Attended: {{totalAttendedRegistrantsCount}}/{{totalRegistrantsCount}}</b>
@@ -33,9 +35,11 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Attend?</th>
+            {{#if isModerator}}
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Attend?</th>
+            {{/if}}
           </tr>
         </thead>
         <tbody>
