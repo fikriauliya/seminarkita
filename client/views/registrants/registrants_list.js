@@ -26,35 +26,30 @@ Template.registrantsList.events({
   "input .filter":function(e){
     var currentValue = $(e.target).val();
     Template.instance().filter.set(currentValue);
+  },
+
+  'submit form': function(e) {
+    e.preventDefault();
+    
+    var data = {
+      name: $(e.target).find('[name=name]').val(),
+      phone: $(e.target).find('[name=phone]').val(),
+      email: $(e.target).find('[name=email]').val(),
+      eventId: this.eventId
+    }
+
+    var filter = Template.instance().filter;
+
+    Meteor.call('create_registrant', data, function(error, id) {
+      if (error) {
+        console.log(error);
+      } else {
+        filter.set('');
+
+        $(e.target).find('[name=phone]').val('')
+        $(e.target).find('[name=email]').val('')
+      }
+      $('#newRegistrantModal').modal('hide');
+    });
   }
 });
-
-
-// // on create, initialize our filter as a ReactiveVar
-// // need to meteor add reactive-var to use this
-// Template.persons.created=function(){
-//   this.filter=new ReactiveVar(20);
-// };
-
-// Template.persons.helpers({
-//   // value of the filter to initialize the HTML input
-//   filter:function(){
-//     return Template.instance().filter.get();
-//   },
-//   // reactively return the persons who are older than the input value
-//   personsFiltered:function(){
-//     return Persons.find({
-//       age:{
-//         $gt:Template.instance().filter.get()
-//       }
-//     });
-//   }
-// });
-
-// bind the value of the input to the underlying filter
-// Template.persons.events({
-//   "input .age":function(event,template){
-//     var currentValue=template.find(".age").valueAsNumber;
-//     template.filter.set(currentValue);
-//   }
-// });

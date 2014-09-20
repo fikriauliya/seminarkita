@@ -1,7 +1,15 @@
 <template name="registrantsList">
   <div class="row">
     <div class="pull-left col-sm-5">
-      <input class="filter form-control" value="{{filter}}" placeholder="Your name"/>
+      <input class="filter form-control" value="{{filter}}" placeholder="Search your name"/>
+    </div>
+    <div class="pull-left col-sm-3">
+      <!-- Button trigger modal -->
+      Not in the list?
+      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#newRegistrantModal">
+        <span class="glyphicon glyphicon-plus"></span>
+        Add new
+      </button>
     </div>
     <div class="pull-right" style="margin-right:20px">
       <b>Attended: {{totalAttendedRegistrantsCount}}/{{totalRegistrantsCount}}</b>
@@ -24,6 +32,45 @@
           {{/each}}
         </tbody>
       </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="newRegistrantModal" tabindex="-1" role="dialog" aria-labelledby="newRegistrantModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="newRegistrantModalLabel">User information</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                   <input type="text" name="name" value="{{filter}}" placeholder="Name" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Phone</label>
+                <div class="col-sm-10">
+                    <input type="text" name="phone" value="" placeholder="Phone" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" value="" name="email" placeholder="Email" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </template>
