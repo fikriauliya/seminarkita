@@ -16,6 +16,14 @@ Template.registrantsList.helpers({
   filter: function() {
     return Template.instance().filter.get();
   },
+
+  isOwner: function() {
+    return this.event.userId == Meteor.userId();
+  },
+
+  myEvents: function() {
+    return Events.find({userId: Meteor.userId()});
+  }
 });
 
 Template.registrantsList.created = function() {
@@ -26,6 +34,22 @@ Template.registrantsList.events({
   "input .filter":function(e){
     var currentValue = $(e.target).val();
     Template.instance().filter.set(currentValue);
+  },
+
+  'click #importBtn': function(e){
+    var data = {
+      importFromEventId: $('#eventListDropDown').val(),
+      importToEventId: this.eventId
+    }
+
+    Meteor.call('import_registrants', data, function(error, id){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Imported");
+      }
+    })
+    
   },
 
   'submit form': function(e) {

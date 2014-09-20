@@ -6,7 +6,7 @@ Meteor.methods({
       
     // ensure the user is logged in
     if (!user)
-      throw new Meteor.Error(401, "You need to login to cretae new event");
+      throw new Meteor.Error(401, "You need to login to create new event");
     
     // ensure the post has a title
     if (!attr.title)

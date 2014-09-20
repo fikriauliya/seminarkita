@@ -16,4 +16,8 @@ Meteor.methods({
     
     return registrantId;
   },
+
+  import_registrants: function (attr) {
+    Registrants.update({eventIds: {$elemMatch: {$in: [attr.importFromEventId]}}}, {$addToSet: {eventIds: attr.importToEventId}}, {multi: true});
+  }
 });
