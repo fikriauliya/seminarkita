@@ -2,7 +2,7 @@ Template.registrantsList.helpers({
   filteredRegistrants: function() {
     return Registrants.find(
       {eventIds: {$elemMatch: { $in: [this.eventId]}}, name: {$regex: ".*" + Template.instance().filter.get() + ".*", $options: 'i'}}, 
-      {sort: {name:1, phone:1, email:1}})
+      {sort: {name:1, phone:1, email:1}, limit: 100})
   },
 
   totalRegistrantsCount: function() {
