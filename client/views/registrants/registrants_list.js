@@ -96,6 +96,7 @@ Template.registrantsList.events({
       } else {
         filter.set('');
 
+        $(e.target).find('[name=name]').val('')
         $(e.target).find('[name=phone]').val('')
         $(e.target).find('[name=email]').val('')
       }
