@@ -17,6 +17,17 @@ Meteor.methods({
     return registrantId;
   },
 
+  update_registrant: function(attr) {
+    //TODO: authenticate user
+
+    // pick out the whitelisted keys
+    var registrant = _.pick(attr, 'name', 'phone', 'email');
+    
+    var registrantId = Registrants.update({_id: attr._id}, {$set: registrant});
+    
+    return registrantId;
+  },
+
   import_registrants: function (attr) {
     Registrants.update({eventIds: {$elemMatch: {$in: [attr.importFromEventId]}}}, {$addToSet: {eventIds: attr.importToEventId}}, {multi: true});
   }

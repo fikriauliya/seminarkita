@@ -32,11 +32,20 @@ Template.registrantsList.helpers({
     } else {
       return [];
     }
-  }
+  },
+
+  editId: function () { return Template.instance().editId.get(); },
+  editName: function () { return Template.instance().editName.get(); },
+  editPhone: function () { return Template.instance().editPhone.get(); },
+  editEmail: function () { return Template.instance().editEmail.get(); },
 });
 
 Template.registrantsList.created = function() {
   this.filter = new ReactiveVar("");
+  this.editId = new ReactiveVar("");
+  this.editName = new ReactiveVar("");
+  this.editPhone = new ReactiveVar("");
+  this.editEmail = new ReactiveVar("");
 }
 
 Template.registrantsList.events({
@@ -61,7 +70,15 @@ Template.registrantsList.events({
     
   },
 
-  'submit form': function(e) {
+  'click .editBtn': function(e) {
+    Template.instance().editId.set(this._id);
+    Template.instance().editName.set(this.name);
+    Template.instance().editPhone.set(this.phone);
+    Template.instance().editEmail.set(this.email);
+    $('#editRegistrantModal').modal('show');
+  },
+
+  'submit #newForm': function(e) {
     e.preventDefault();
     
     var data = {
@@ -83,6 +100,25 @@ Template.registrantsList.events({
         $(e.target).find('[name=email]').val('')
       }
       $('#newRegistrantModal').modal('hide');
+    });
+  },
+
+  'submit #editForm': function(e) {
+    e.preventDefault();
+
+    var data = {
+      _id: $(e.target).find('[name=_id]').val(),
+      name: $(e.target).find('[name=name]').val(),
+      phone: $(e.target).find('[name=phone]').val(),
+      email: $(e.target).find('[name=email]').val(),
+    }
+
+    Meteor.call('update_registrant', data, function(error, id) {
+      if (error) {
+        console.log(error);
+      } else {
+      }
+      $("#editRegistrantModal").modal('hide');
     });
   }
 });

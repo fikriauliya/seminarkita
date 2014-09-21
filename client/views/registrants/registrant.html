@@ -1,10 +1,13 @@
 <template name="registrant">
   <tr>
-    <td>{{name}}</td>
     {{#if isModerator}}
-      <td>{{phone}}</td>
-      <td>{{email}}</td>
-      <td><input type=checkbox {{attending}} class="attending"/></td>
+      <td width="10%"><input type=checkbox {{attending}} class="attending"/></td> 
+    {{/if}}
+    <td width="30%">{{name}}</td>
+    {{#if isModerator}}
+      <td width="25%">{{phone}}</td>
+      <td width="25%">{{email}}</td>
+      <td width="10%" class="editBtn"><button class="btn btn-default">Edit</button></td>
     {{/if}}
   </tr>
 </template>
